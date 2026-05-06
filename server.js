@@ -1,10 +1,11 @@
+// BookMyCrypto Server
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 
@@ -26,16 +27,13 @@ app.get('/api/news', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   try {
     const filter = req.query.filter || 'hot';
-    const cacheKey = `news_${filter}`;
-    const cached = getCache(cacheKey);
+    const cached = getCache(`news_${filter}`);
     if (cached) return res.json(cached);
-
     const sortOrder = filter === 'latest' ? 'latest' : 'popular';
-    const url = `https://min-api.cryptocompare.com/data/v2/news/?lang=EN&sortOrder=${sortOrder}`;
-    const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
+    const response = await fetch(`https://min-api.cryptocompare.com/data/v2/news/?lang=EN&sortOrder=${sortOrder}`, { headers: { 'Accept': 'application/json' } });
     if (!response.ok) throw new Error(`Upstream ${response.status}`);
     const data = await response.json();
-    setCache(cacheKey, data, 5 * 60 * 1000); // cache 5 mins
+    setCache(`news_${filter}`, data, 5 * 60 * 1000);
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch news', details: err.message });
@@ -47,17 +45,12 @@ app.get('/api/markets', async (req, res) => {
   try {
     const cached = getCache('markets');
     if (cached) return res.json(cached);
-
-    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h,24h,7d';
-    const response = await fetch(url, {
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'BookMyCrypto/1.0'
-      }
+    const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h,24h,7d', {
+      headers: { 'Accept': 'application/json', 'User-Agent': 'BookMyCrypto/1.0' }
     });
-    if (!response.ok) throw new Error(`Upstream ${response.status}: ${await response.text()}`);
+    if (!response.ok) throw new Error(`Upstream ${response.status}`);
     const data = await response.json();
-    setCache('markets', data, 60 * 1000); // cache 60 secs
+    setCache('markets', data, 60 * 1000);
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch market data', details: err.message });
@@ -69,16 +62,12 @@ app.get('/api/global', async (req, res) => {
   try {
     const cached = getCache('global');
     if (cached) return res.json(cached);
-
     const response = await fetch('https://api.coingecko.com/api/v3/global', {
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'BookMyCrypto/1.0'
-      }
+      headers: { 'Accept': 'application/json', 'User-Agent': 'BookMyCrypto/1.0' }
     });
     if (!response.ok) throw new Error(`Upstream ${response.status}`);
     const data = await response.json();
-    setCache('global', data, 60 * 1000); // cache 60 secs
+    setCache('global', data, 60 * 1000);
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch global data', details: err.message });
@@ -89,10 +78,8 @@ app.get('/api/coin/:id', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   try {
     const id = req.params.id;
-    const cacheKey = `coin_${id}`;
-    const cached = getCache(cacheKey);
+    const cached = getCache(`coin_${id}`);
     if (cached) return res.json(cached);
-
     const [coinRes, chartRes] = await Promise.all([
       fetch(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&community_data=false&developer_data=false`, {
         headers: { 'Accept': 'application/json', 'User-Agent': 'BookMyCrypto/1.0' }
@@ -102,17 +89,17 @@ app.get('/api/coin/:id', async (req, res) => {
       })
     ]);
     if (!coinRes.ok) throw new Error(`Coin not found: ${coinRes.status}`);
-    const coin  = await coinRes.json();
+    const coin = await coinRes.json();
     const chart = chartRes.ok ? await chartRes.json() : { prices: [] };
     const result = { coin, chart };
-    setCache(cacheKey, result, 2 * 60 * 1000); // cache 2 mins
+    setCache(`coin_${id}`, result, 2 * 60 * 1000);
     res.json(result);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch coin', details: err.message });
   }
 });
 
-// Static files and SPA fallback AFTER API routes
+// Static files AFTER API routes
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -120,76 +107,4 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`BookMyCrypto running on http://localhost:${PORT}`);
-});
-
-
-// API routes MUST come before static files and catch-all
-app.get('/api/news', async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  try {
-    const filter = req.query.filter || 'hot';
-    const sortOrder = filter === 'latest' ? 'latest' : 'popular';
-    const url = `https://min-api.cryptocompare.com/data/v2/news/?lang=EN&sortOrder=${sortOrder}`;
-    const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
-    if (!response.ok) throw new Error(`Upstream ${response.status}`);
-    const data = await response.json();
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch news', details: err.message });
-  }
-});
-
-app.get('/api/markets', async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  try {
-    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h,24h,7d';
-    const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
-    if (!response.ok) throw new Error(`Upstream ${response.status}: ${await response.text()}`);
-    const data = await response.json();
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch market data', details: err.message });
-  }
-});
-
-// Coin detail page data
-app.get('/api/coin/:id', async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  try {
-    const id = req.params.id;
-    const [coinRes, chartRes] = await Promise.all([
-      fetch(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&community_data=false&developer_data=false`, { headers: { 'Accept': 'application/json' } }),
-      fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30`, { headers: { 'Accept': 'application/json' } })
-    ]);
-    if (!coinRes.ok) throw new Error(`Coin not found: ${coinRes.status}`);
-    const coin  = await coinRes.json();
-    const chart = chartRes.ok ? await chartRes.json() : { prices: [] };
-    res.json({ coin, chart });
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch coin', details: err.message });
-  }
-});
-
-app.get('/api/global', async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  try {
-    const response = await fetch('https://api.coingecko.com/api/v3/global', {
-      headers: { 'Accept': 'application/json' }
-    });
-    if (!response.ok) throw new Error(`Upstream ${response.status}`);
-    const data = await response.json();
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch global data', details: err.message });
-  }
-});
-
-// Static files and SPA fallback AFTER API routes
-app.use(express.static(path.join(__dirname, 'public')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`BookMyCrypto running on port ${PORT}`);
 });
