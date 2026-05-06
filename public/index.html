@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CryptoPulse — Live Markets & News</title>
+  <title>BookMyCrypto — Live Markets & News</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:        #080b0f;
-      --bg2:       #0d1117;
-      --bg3:       #111820;
-      --border:    rgba(255,255,255,0.06);
-      --gold:      #c9a84c;
-      --gold2:     #f0d080;
-      --green:     #00e5a0;
-      --red:       #ff4d6d;
-      --text:      #e8eaf0;
-      --muted:     #5a6275;
+      --bg:        #f4f6fa;
+      --bg2:       #ffffff;
+      --bg3:       #eef0f5;
+      --border:    rgba(0,0,0,0.08);
+      --gold:      #b8860b;
+      --gold2:     #d4a017;
+      --green:     #00a87a;
+      --red:       #e0284a;
+      --text:      #0f1117;
+      --muted:     #7a8299;
       --accent:    #1a7fff;
     }
 
@@ -34,14 +34,15 @@
       overflow-x: hidden;
     }
 
-    /* Noise overlay */
+    /* Subtle dot pattern overlay */
     body::before {
       content: '';
       position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
       pointer-events: none;
-      z-index: 1000;
-      opacity: 0.4;
+      z-index: 0;
+      opacity: 0.5;
     }
 
     /* Ambient glow */
@@ -51,7 +52,7 @@
       top: -30vh; left: 50%;
       transform: translateX(-50%);
       width: 80vw; height: 60vh;
-      background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(184,134,11,0.05) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -62,9 +63,10 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem;
       height: 56px;
-      background: rgba(8,11,15,0.85);
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
     }
 
     .logo {
@@ -111,7 +113,7 @@
     /* ── TICKER TAPE ── */
     .ticker-wrap {
       overflow: hidden;
-      background: var(--bg2);
+      background: var(--text);
       border-bottom: 1px solid var(--border);
       height: 34px;
       display: flex; align-items: center;
@@ -127,13 +129,13 @@
     .ticker-item {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 0 1.5rem;
-      border-right: 1px solid var(--border);
+      border-right: 1px solid rgba(255,255,255,0.1);
       font-size: 11px;
     }
-    .ticker-symbol { color: var(--gold); font-weight: 600; letter-spacing: 0.05em; }
-    .ticker-price { color: var(--text); }
-    .ticker-change.pos { color: var(--green); }
-    .ticker-change.neg { color: var(--red); }
+    .ticker-symbol { color: #f0d080; font-weight: 600; letter-spacing: 0.05em; }
+    .ticker-price { color: #ffffff; }
+    .ticker-change.pos { color: #00e5a0; }
+    .ticker-change.neg { color: #ff4d6d; }
 
     /* ── LAYOUT ── */
     main {
@@ -266,6 +268,7 @@
     .news-panel {
       display: flex; flex-direction: column;
       background: var(--bg2);
+      border-left: 1px solid var(--border);
     }
 
     .news-filters {
@@ -339,7 +342,7 @@
 
     /* ── LOADING / SKELETON ── */
     .skeleton {
-      background: linear-gradient(90deg, var(--bg3) 25%, rgba(255,255,255,0.04) 50%, var(--bg3) 75%);
+      background: linear-gradient(90deg, #e8eaf0 25%, #f4f6fa 50%, #e8eaf0 75%);
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
       border-radius: 3px;
@@ -357,6 +360,7 @@
       padding: 1.2rem 1.5rem;
       border-right: 1px solid var(--border);
       display: flex; flex-direction: column; gap: 4px;
+      background: var(--bg2);
     }
     .stat-card:last-child { border-right: none; }
     .stat-label {
@@ -419,7 +423,7 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo">CRYPTO<span>PULSE</span></div>
+  <div class="logo">BOOKMY<span>CRYPTO</span></div>
   <div class="header-right">
     <div class="global-stats" id="globalStats">
       <div class="global-stat">
@@ -549,7 +553,7 @@ const API = {
   news(filter) {
     return IS_SERVER
       ? `/api/news?filter=${filter}`
-      : `https://cryptopanic.com/api/v1/posts/?public=true&filter=${filter}`;
+      : `https://min-api.cryptocompare.com/data/v2/news/?lang=EN&sortOrder=popular`;
   }
 };
 
@@ -770,7 +774,7 @@ async function loadNews(filter = 'hot') {
     const res = await fetch(API.news(filter));
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const posts = data.results || [];
+    const posts = data.Data || [];
 
     if (!posts.length) {
       list.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--muted)">No news available</div>';
@@ -778,21 +782,16 @@ async function loadNews(filter = 'hot') {
     }
 
     list.innerHTML = posts.slice(0, 30).map(p => {
-      const votes = p.votes || {};
-      const bull = votes.positive || 0;
-      const bear = votes.negative || 0;
-      let sentiment = 'neutral', sentLabel = 'Neutral';
-      if (bull > bear + 2) { sentiment = 'bullish'; sentLabel = '▲ Bullish'; }
-      else if (bear > bull + 2) { sentiment = 'bearish'; sentLabel = '▼ Bearish'; }
-
-      const currencies = (p.currencies || []).slice(0, 4).map(c =>
-        `<span class="news-tag">${c.code}</span>`).join('');
+      const sentiment = 'neutral', sentLabel = 'News';
+      const tags = (p.categories || '').split('|').filter(Boolean).slice(0, 4);
+      const currencies = tags.map(t => `<span class="news-tag">${t}</span>`).join('');
+      const timeIso = new Date(p.published_on * 1000).toISOString();
 
       return `<a class="news-item" href="${p.url}" target="_blank" rel="noopener">
         <div class="news-meta">
-          <span class="news-source">${p.source?.title || 'Unknown'}</span>
-          <span class="news-time">${fmt.time(p.published_at)}</span>
-          <span class="news-sentiment ${sentiment}">${sentLabel}</span>
+          <span class="news-source">${p.source_info?.name || p.source || 'Unknown'}</span>
+          <span class="news-time">${fmt.time(timeIso)}</span>
+          <span class="news-sentiment neutral">${sentLabel}</span>
         </div>
         <div class="news-title">${p.title}</div>
         ${currencies ? `<div class="news-currencies">${currencies}</div>` : ''}
