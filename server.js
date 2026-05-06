@@ -12,12 +12,10 @@ app.use(cors());
 app.get('/api/news', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   try {
-    const apiKey = process.env.CRYPTOPANIC_API_KEY || '';
     const filter = req.query.filter || 'hot';
-    const url = apiKey
-      ? `https://cryptopanic.com/api/v1/posts/?auth_token=${apiKey}&public=true&filter=${filter}`
-      : `https://cryptopanic.com/api/v1/posts/?public=true&filter=${filter}`;
-    const response = await fetch(url);
+    const sortOrder = filter === 'latest' ? 'latest' : 'popular';
+    const url = `https://min-api.cryptocompare.com/data/v2/news/?lang=EN&sortOrder=${sortOrder}`;
+    const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
     if (!response.ok) throw new Error(`Upstream ${response.status}`);
     const data = await response.json();
     res.json(data);
