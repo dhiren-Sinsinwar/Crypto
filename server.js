@@ -53,37 +53,44 @@ app.get('/api/markets', async (req, res) => {
   try {
     const cached = getCache('markets');
     if (cached) return res.json(cached);
-
-    // Fetch top 20 assets from CoinCap
-    const response = await fetch('https://api.coincap.io/v2/assets?limit=20', { headers: HEADERS });
-    if (!response.ok) throw new Error(`CoinCap ${response.status}`);
-    const { data: assets } = await response.json();
-
-    // Fetch 7d sparkline for each (CoinCap history endpoint)
-    const now = Date.now();
-    const weekAgo = now - 7 * 24 * 60 * 60 * 1000;
-    const sparklines = {};
-
-    await Promise.allSettled(assets.slice(0, 20).map(async a => {
-      try {
-        const r = await fetch(
-          `https://api.coincap.io/v2/assets/${a.id}/history?interval=h6&start=${weekAgo}&end=${now}`,
-          { headers: HEADERS }
-        );
-        if (r.ok) {
-          const { data } = await r.json();
-          sparklines[a.id] = (data || []).map(p => parseFloat(p.priceUsd));
-        }
-      } catch(e) {}
-    }));
-
-    const markets = assets.map(a => coinCapToMarket(a, sparklines));
-    setCache('markets', markets, 60 * 1000); // 60 sec cache
-    res.json(markets);
+    const data = await fetchMarkets();
+    res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch market data', details: err.message });
   }
 });
+
+async function fetchMarkets() {
+  // Fetch top 20 assets
+  const response = await fetch('https://api.coincap.io/v2/assets?limit=20', { headers: HEADERS });
+  if (!response.ok) throw new Error(`CoinCap ${response.status}`);
+  const { data: assets } = await response.json();
+
+  // Fetch sparklines in parallel with 3s timeout per request
+  const now = Date.now();
+  const weekAgo = now - 7 * 24 * 60 * 60 * 1000;
+  const sparklines = {};
+
+  await Promise.allSettled(assets.map(async a => {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3000);
+      const r = await fetch(
+        `https://api.coincap.io/v2/assets/${a.id}/history?interval=h12&start=${weekAgo}&end=${now}`,
+        { headers: HEADERS, signal: controller.signal }
+      );
+      clearTimeout(timeout);
+      if (r.ok) {
+        const { data } = await r.json();
+        sparklines[a.id] = (data || []).map(p => parseFloat(p.priceUsd));
+      }
+    } catch(e) { sparklines[a.id] = []; }
+  }));
+
+  const markets = assets.map(a => coinCapToMarket(a, sparklines));
+  setCache('markets', markets, 90 * 1000); // cache 90 seconds
+  return markets;
+}
 
 app.get('/api/global', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -245,4 +252,7 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`BookMyCrypto running on http://localhost:${PORT}`);
+  // Pre-warm cache on startup so first visitor gets instant response
+  console.log('Pre-warming cache...');
+  fetchMarkets().then(() => console.log('Markets cache ready!')).catch(e => console.log('Cache warm failed:', e.message));
 });
