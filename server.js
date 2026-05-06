@@ -37,6 +37,24 @@ app.get('/api/markets', async (req, res) => {
   }
 });
 
+// Coin detail page data
+app.get('/api/coin/:id', async (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  try {
+    const id = req.params.id;
+    const [coinRes, chartRes] = await Promise.all([
+      fetch(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&community_data=false&developer_data=false`, { headers: { 'Accept': 'application/json' } }),
+      fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30`, { headers: { 'Accept': 'application/json' } })
+    ]);
+    if (!coinRes.ok) throw new Error(`Coin not found: ${coinRes.status}`);
+    const coin  = await coinRes.json();
+    const chart = chartRes.ok ? await chartRes.json() : { prices: [] };
+    res.json({ coin, chart });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch coin', details: err.message });
+  }
+});
+
 app.get('/api/global', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   try {
