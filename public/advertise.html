@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advertise With Us — BookMyCrypto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--blue-light:#e8f0fe;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--muted:#94a3b8;--orange:#f97316;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;}
+
+    /* Hero */
+    .hero{background:linear-gradient(135deg,#1251c5 0%,#0d3d99 100%);padding:4rem 2rem;text-align:center;color:#fff;}
+    .hero h1{font-family:'Nunito',sans-serif;font-size:2.8rem;font-weight:900;margin-bottom:1rem;letter-spacing:-1px;}
+    .hero h1 span{color:#f97316;}
+    .hero p{font-size:16px;color:rgba(255,255,255,0.8);max-width:600px;margin:0 auto 2rem;line-height:1.7;}
+    .hero-cta{display:inline-block;background:#f97316;color:#fff;font-weight:700;font-size:15px;padding:14px 32px;border-radius:10px;text-decoration:none;transition:background 0.15s;box-shadow:0 4px 20px rgba(249,115,22,0.4);}
+    .hero-cta:hover{background:#ea6c0a;}
+    .hero-email{margin-top:1rem;font-size:13px;color:rgba(255,255,255,0.6);}
+    .hero-email a{color:#93c5fd;text-decoration:none;font-weight:600;}
+
+    /* Stats */
+    .stats-strip{background:var(--bg2);border-bottom:1px solid var(--border);padding:2rem;}
+    .stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center;}
+    .stat-num{font-family:'Nunito',sans-serif;font-size:2rem;font-weight:900;color:var(--blue);}
+    .stat-label{font-size:11px;color:var(--muted);margin-top:4px;font-weight:500;}
+
+    .page{max-width:900px;margin:3rem auto;padding:0 2rem 4rem;}
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);margin-bottom:1rem;}
+    h2 span{color:var(--blue);}
+    p{line-height:1.85;color:#334155;margin-bottom:0.75rem;}
+    p:last-child{margin-bottom:0;}
+
+    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
+    .pkg{border:2px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;transition:border-color 0.15s;}
+    .pkg.featured{border-color:var(--blue);background:var(--blue-light);}
+    .pkg-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;margin-bottom:4px;color:var(--text);}
+    .pkg.featured .pkg-name{color:var(--blue);}
+    .pkg-badge{display:inline-block;background:var(--blue);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:0.06em;margin-bottom:8px;}
+    .pkg-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+    .pkg-features{text-align:left;font-size:12px;color:#334155;line-height:2;}
+    .check{color:var(--blue);font-weight:700;margin-right:5px;}
+
+    .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+    .why-item{display:flex;align-items:flex-start;gap:12px;}
+    .why-icon{font-size:1.5rem;flex-shrink:0;}
+    .why-title{font-weight:700;font-size:13px;margin-bottom:3px;color:var(--text);}
+    .why-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+
+    .cta-box{background:linear-gradient(135deg,#1251c5,#0d3d99);border-radius:14px;padding:2.5rem;text-align:center;color:#fff;}
+    .cta-box h2{color:#fff;font-size:1.4rem;margin-bottom:0.5rem;}
+    .cta-box p{color:rgba(255,255,255,0.75);margin-bottom:1.5rem;}
+    .cta-email{display:inline-block;background:#f97316;color:#fff;font-weight:800;font-size:16px;padding:14px 32px;border-radius:10px;text-decoration:none;letter-spacing:-0.3px;}
+    .cta-sub{margin-top:1rem;font-size:12px;color:rgba(255,255,255,0.5);}
+
+    footer-bar{display:block;text-align:center;padding:2rem;color:var(--muted);font-size:12px;}
+    @media(max-width:700px){.packages,.why-grid,.stats-inner{grid-template-columns:1fr;}.hero h1{font-size:2rem;}}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Reach Crypto Investors<br/>Who <span>Actually Trade</span></h1>
+  <p>BookMyCrypto connects your brand with a highly engaged audience of active crypto investors, traders and enthusiasts tracking live markets every day.</p>
+  <a class="hero-cta" href="mailto:sales@bookmycrypto.com">Get in Touch →</a>
+  <div class="hero-email">Or email us directly at <a href="mailto:sales@bookmycrypto.com">sales@bookmycrypto.com</a></div>
+</div>
+
+<!-- Stats -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div><div class="stat-num">50K+</div><div class="stat-label">Monthly Active Users</div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-label">Live Platform Uptime</div></div>
+    <div><div class="stat-num">20+</div><div class="stat-label">Coins Tracked Live</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-label">Crypto-Focused Audience</div></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- Why Advertise -->
+  <div class="card">
+    <h2>Why Advertise on <span>BookMyCrypto</span>?</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <div><div class="why-title">Laser-Targeted Audience</div><div class="why-desc">Every visitor is actively interested in crypto. No wasted impressions on casual browsers.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div><div class="why-title">High Engagement</div><div class="why-desc">Users check live prices multiple times a day — giving your ad repeated high-quality exposure.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💎</div>
+        <div><div class="why-title">Premium Placements</div><div class="why-desc">Above-the-fold positions on our markets page, news feed and individual coin detail pages.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📊</div>
+        <div><div class="why-title">Transparent Reporting</div><div class="why-desc">Detailed impression and click reports delivered weekly so you always know your ROI.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🛡️</div>
+        <div><div class="why-title">Brand Safe Environment</div><div class="why-desc">We vet all content rigorously. Your brand only appears alongside legitimate, quality content.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🤝</div>
+        <div><div class="why-title">Flexible Partnerships</div><div class="why-desc">From one-time banner campaigns to long-term strategic co-marketing partnerships.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages -->
+  <div class="card">
+    <h2>Advertising <span>Packages</span></h2>
+    <div class="packages">
+      <div class="pkg">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-desc">Great for new projects looking to build awareness in the crypto community.</div>
+        <div class="pkg-features">
+          <div><span class="check">✓</span>Banner ad placement</div>
+          <div><span class="check">✓</span>7-day campaign</div>
+          <div><span class="check">✓</span>Weekly report</div>
+          <div><span class="check">✓</span>1 ad format</div>
+        </div>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge">MOST POPULAR</div>
+        <div class="pkg-name">Growth</div>
+        <div class="pkg-desc">Multi-channel exposure for established projects seeking serious reach.</div>
+        <div class="pkg-features">
+          <div><span class="check">✓</span>Banner + sponsored listing</div>
+          <div><span class="check">✓</span>30-day campaign</div>
+          <div><span class="check">✓</span>Newsletter placement</div>
+          <div><span class="check">✓</span>Daily reports</div>
+          <div><span class="check">✓</span>Dedicated account manager</div>
+        </div>
+      </div>
+      <div class="pkg">
+        <div class="pkg-name">Enterprise</div>
+        <div class="pkg-desc">Full-platform integration for major brands and exchanges.</div>
+        <div class="pkg-features">
+          <div><span class="check">✓</span>All ad formats</div>
+          <div><span class="check">✓</span>Custom campaign length</div>
+          <div><span class="check">✓</span>Sponsored content article</div>
+          <div><span class="check">✓</span>Homepage takeover option</div>
+          <div><span class="check">✓</span>Co-marketing opportunities</div>
+          <div><span class="check">✓</span>Priority support</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);text-align:center">Pricing available on request. We create custom packages based on your goals and budget.</p>
+  </div>
+
+  <!-- Who We Work With -->
+  <div class="card">
+    <h2>Who We Work With</h2>
+    <p>We partner with reputable, legitimate businesses in the crypto space including cryptocurrency exchanges, blockchain projects, DeFi protocols, crypto wallets, Web3 infrastructure providers, NFT marketplaces, and crypto education platforms.</p>
+    <p>All advertisers go through a vetting process. We do not accept ads from unregulated financial schemes, scam projects, or any entity that could harm our users. See our full <a href="/ad-policy.html" style="color:var(--blue);font-weight:600;">Ad Policy</a> for details.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Ready to Grow Your Crypto Brand?</h2>
+    <p>Contact our sales team today to discuss your goals, audience targeting options and available packages. We typically respond within 24 hours.</p>
+    <a class="cta-email" href="mailto:sales@bookmycrypto.com">📩 sales@bookmycrypto.com</a>
+    <div class="cta-sub">Response time: within 24 business hours</div>
+  </div>
+
+</div>
+<footer-bar>© 2026 BookMyCrypto.com. All Rights Reserved.</footer-bar>
+</body>
+</html>
