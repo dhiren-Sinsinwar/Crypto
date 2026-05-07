@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us — BookMyCrypto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--blue-light:#e8f0fe;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--muted:#94a3b8;--green:#16a34a;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;}
+    .page{max-width:860px;margin:3rem auto;padding:0 2rem;}
+    h1{font-family:'Nunito',sans-serif;font-size:2rem;font-weight:900;margin-bottom:0.5rem;}
+    h1 span{color:var(--blue);}
+    .subtitle{color:var(--muted);margin-bottom:2.5rem;}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--blue);margin-bottom:0.75rem;}
+    p{line-height:1.8;color:#334155;}
+    label{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;margin-top:1rem;}
+    input,textarea,select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border 0.15s;}
+    input:focus,textarea:focus{border-color:var(--blue);}
+    textarea{resize:vertical;min-height:120px;}
+    .submit-btn{margin-top:1.25rem;width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:background 0.15s;}
+    .submit-btn:hover{background:#0d3d99;}
+    .contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.25rem;}
+    .contact-icon{font-size:1.5rem;}
+    .contact-label{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
+    .contact-value{font-size:13px;color:var(--text);font-weight:500;margin-top:2px;}
+    .success{display:none;background:#dcfce7;border:1px solid #86efac;color:#15803d;padding:1rem;border-radius:8px;margin-top:1rem;text-align:center;font-weight:600;}
+    footer-bar{display:block;text-align:center;padding:2rem;color:var(--muted);font-size:12px;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+<div class="page">
+  <h1>Contact <span>Us</span></h1>
+  <p class="subtitle">Have a question, feedback, or partnership inquiry? We'd love to hear from you.</p>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>Send Us a Message</h2>
+        <label>Your Name</label>
+        <input type="text" id="cName" placeholder="John Doe"/>
+        <label>Email Address</label>
+        <input type="email" id="cEmail" placeholder="john@example.com"/>
+        <label>Subject</label>
+        <select id="cSubject">
+          <option>General Inquiry</option>
+          <option>Data Issue / Bug Report</option>
+          <option>Advertising & Partnerships</option>
+          <option>Press & Media</option>
+          <option>Feature Request</option>
+          <option>Other</option>
+        </select>
+        <label>Message</label>
+        <textarea id="cMessage" placeholder="Tell us how we can help..."></textarea>
+        <button class="submit-btn" onclick="submitContact()">Send Message →</button>
+        <div class="success" id="successMsg">✅ Message sent! We'll get back to you within 24 hours.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Get in Touch</h2>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><div class="contact-label">General Inquiries</div><div class="contact-value">hello@bookmycrypto.com</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🤝</div>
+          <div><div class="contact-label">Partnerships & Advertising</div><div class="contact-value">partners@bookmycrypto.com</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🐛</div>
+          <div><div class="contact-label">Bug Reports</div><div class="contact-value">bugs@bookmycrypto.com</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📰</div>
+          <div><div class="contact-label">Press & Media</div><div class="contact-value">press@bookmycrypto.com</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏱️</div>
+          <div><div class="contact-label">Response Time</div><div class="contact-value">Within 24 business hours</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Follow Us</h2>
+        <p style="margin-bottom:1rem;font-size:12px;color:var(--muted)">Stay updated with the latest crypto news and platform updates.</p>
+        <div class="contact-item"><div class="contact-icon">𝕏</div><div><div class="contact-label">Twitter / X</div><div class="contact-value">@BookMyCrypto</div></div></div>
+        <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-label">Telegram</div><div class="contact-value">t.me/BookMyCrypto</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer-bar>© 2026 BookMyCrypto.com. All Rights Reserved.</footer-bar>
+<script>
+function submitContact() {
+  const name = document.getElementById('cName').value;
+  const email = document.getElementById('cEmail').value;
+  const msg = document.getElementById('cMessage').value;
+  if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
+  if (!email.includes('@')) { alert('Please enter a valid email.'); return; }
+  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('cName').value = '';
+  document.getElementById('cEmail').value = '';
+  document.getElementById('cMessage').value = '';
+}
+</script>
+</body>
+</html>

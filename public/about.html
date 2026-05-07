@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — BookMyCrypto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--muted:#94a3b8;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;transform:rotate(-2deg);display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;}
+    .page{max-width:860px;margin:3rem auto;padding:0 2rem;}
+    .page h1{font-family:'Nunito',sans-serif;font-size:2.2rem;font-weight:900;margin-bottom:0.5rem;color:var(--text);}
+    .page h1 span{color:var(--blue);}
+    .subtitle{color:var(--muted);font-size:15px;margin-bottom:2.5rem;}
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    .card h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;color:var(--blue);margin-bottom:0.75rem;}
+    .card p{line-height:1.8;color:#334155;margin-bottom:0.75rem;}
+    .card p:last-child{margin-bottom:0;}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
+    .stat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
+    .stat-num{font-family:'Nunito',sans-serif;font-size:2rem;font-weight:900;color:var(--blue);}
+    .stat-label{font-size:12px;color:var(--muted);margin-top:4px;}
+    footer-bar{display:block;text-align:center;padding:2rem;color:var(--muted);font-size:12px;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+<div class="page">
+  <h1>About <span>BookMyCrypto</span></h1>
+  <p class="subtitle">Your real-time window into the world of cryptocurrency.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Live Cryptocurrencies Tracked</div></div>
+    <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Real-time Price Updates</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free to Use</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Who We Are</h2>
+    <p>BookMyCrypto is a free, real-time cryptocurrency tracking platform built for both beginners and experienced traders. We believe everyone deserves access to professional-grade market data without paying a cent.</p>
+    <p>Our platform aggregates live pricing data, breaking crypto news, and market intelligence — all in one clean, fast interface inspired by the world's best financial platforms.</p>
+  </div>
+
+  <div class="card">
+    <h2>What We Offer</h2>
+    <p><strong>Live Prices:</strong> Real-time price feeds powered by Binance WebSocket — the same data source used by professional trading desks.</p>
+    <p><strong>Market Data:</strong> Track market cap, 24h volume, price changes across 1h, 24h and 7d timeframes for the top 20 cryptocurrencies.</p>
+    <p><strong>News Feed:</strong> Curated crypto news from leading sources including CoinDesk and CryptoCompare, updated every 5 minutes.</p>
+    <p><strong>Coin Detail Pages:</strong> Deep-dive into any coin with interactive price charts, supply stats, ATH/ATL data and useful links.</p>
+  </div>
+
+  <div class="card">
+    <h2>Our Data Sources</h2>
+    <p>We use industry-standard, trusted APIs to power our platform: <strong>CoinGecko</strong> for comprehensive market data, <strong>Binance</strong> for real-time WebSocket price streams, <strong>Alternative.me</strong> for the Fear & Greed Index, and <strong>CryptoCompare</strong> and <strong>CoinDesk</strong> for news.</p>
+  </div>
+
+  <div class="card">
+    <h2>Disclaimer</h2>
+    <p>All data on BookMyCrypto is provided for informational purposes only. Nothing on this platform constitutes financial advice. Cryptocurrency investments are highly volatile and risky. Always do your own research and consult a qualified financial advisor before making any investment decisions.</p>
+  </div>
+</div>
+<footer-bar>© 2026 BookMyCrypto.com. All Rights Reserved.</footer-bar>
+</body>
+</html>
