@@ -146,7 +146,88 @@
     .news-tags { display: flex; flex-wrap: wrap; gap: 4px; }
     .news-tag { font-size: 9px; font-weight: 600; padding: 2px 6px; background: var(--blue-light); color: var(--blue); border-radius: 4px; }
 
-    /* RESPONSIVE */
+    /* ── FOOTER ── */
+    footer { margin-top: 3rem; }
+
+    .footer-newsletter {
+      background: var(--blue);
+      padding: 2rem;
+    }
+    .footer-nl-inner {
+      max-width: 1600px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .footer-nl-title { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .footer-nl-sub { font-size: 12px; color: rgba(255,255,255,0.7); }
+    .footer-nl-form { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-nl-input {
+      padding: 10px 16px; border: none; border-radius: 8px;
+      font-size: 13px; width: 280px; outline: none;
+      background: rgba(255,255,255,0.15); color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .footer-nl-input::placeholder { color: rgba(255,255,255,0.5); }
+    .footer-nl-btn {
+      padding: 10px 24px; background: #f97316; color: #fff;
+      border: none; border-radius: 8px; font-weight: 700; font-size: 13px;
+      cursor: pointer; transition: background 0.15s; white-space: nowrap;
+    }
+    .footer-nl-btn:hover { background: #ea6c0a; }
+
+    .footer-main { background: #0f172a; padding: 3rem 2rem 2rem; }
+    .footer-inner {
+      max-width: 1600px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900;
+      color: #fff; margin-bottom: 1rem; letter-spacing: -0.3px;
+    }
+    .footer-logo-my {
+      background: #f97316; padding: 1px 6px 2px; border-radius: 5px;
+      margin: 0 2px; font-style: italic; transform: rotate(-2deg);
+      display: inline-block;
+    }
+    .footer-logo-crypto { color: #93c5fd; }
+    .footer-desc { font-size: 12px; color: #94a3b8; line-height: 1.7; margin-bottom: 1rem; }
+    .footer-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-badge {
+      font-size: 11px; font-weight: 600; padding: 4px 10px;
+      background: rgba(255,255,255,0.07); color: #94a3b8;
+      border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-col { display: flex; flex-direction: column; gap: 2px; }
+    .footer-col-title {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px;
+      color: #fff; text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .footer-link {
+      font-size: 12px; color: #94a3b8; text-decoration: none;
+      padding: 3px 0; transition: color 0.15s;
+    }
+    .footer-link:hover { color: #93c5fd; }
+
+    .footer-bottom {
+      background: #080f1f;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem 2rem;
+    }
+    .footer-bottom-inner {
+      max-width: 1600px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; color: #475569; flex-wrap: wrap; gap: 8px;
+    }
+    .footer-bottom-links { display: flex; gap: 1.2rem; }
+    .footer-bottom-link { color: #475569; text-decoration: none; transition: color 0.15s; }
+    .footer-bottom-link:hover { color: #93c5fd; }
+
+    @media (max-width: 1100px) { .footer-inner { grid-template-columns: 1fr 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+
+    /* ── END FOOTER ── */
     @media (max-width: 1100px) { .hero-cards { grid-template-columns: repeat(3,1fr); } }
     @media (max-width: 768px) { .page-wrap { grid-template-columns: 1fr; padding: 1rem; } .hero-cards { grid-template-columns: repeat(2,1fr); } .header-stats { display: none; } .hero-section { padding: 0 1rem 1rem; } }
   </style>
@@ -234,7 +315,112 @@
   </div>
 </div>
 
+<!-- FOOTER -->
+<footer>
+  <!-- Newsletter Bar -->
+  <div class="footer-newsletter">
+    <div class="footer-nl-inner">
+      <div>
+        <div class="footer-nl-title">📬 Stay ahead of the market</div>
+        <div class="footer-nl-sub">Get daily crypto insights, price alerts and market summaries — free.</div>
+      </div>
+      <div class="footer-nl-form">
+        <input type="email" id="nlEmail" placeholder="Enter your email address" class="footer-nl-input"/>
+        <button onclick="subscribeNewsletter()" class="footer-nl-btn">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer -->
+  <div class="footer-main">
+    <div class="footer-inner">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">book<span class="footer-logo-my">my</span><span class="footer-logo-crypto">crypto</span></div>
+        <p class="footer-desc">BookMyCrypto is your real-time crypto intelligence platform. Track live prices, breaking news, market trends and deep-dive into any asset — all in one place.</p>
+        <div class="footer-badges">
+          <span class="footer-badge">🔒 Secure</span>
+          <span class="footer-badge">⚡ Real-time</span>
+          <span class="footer-badge">🆓 Free</span>
+        </div>
+      </div>
+
+      <!-- Explore -->
+      <div class="footer-col">
+        <div class="footer-col-title">Explore</div>
+        <a href="/" class="footer-link">Live Markets</a>
+        <a href="/?sort=gainers" class="footer-link">Top Gainers</a>
+        <a href="/?sort=losers" class="footer-link">Top Losers</a>
+        <a href="/coin.html?id=bitcoin" class="footer-link">Bitcoin (BTC)</a>
+        <a href="/coin.html?id=ethereum" class="footer-link">Ethereum (ETH)</a>
+        <a href="/coin.html?id=solana" class="footer-link">Solana (SOL)</a>
+        <a href="/coin.html?id=binancecoin" class="footer-link">BNB</a>
+      </div>
+
+      <!-- Learn -->
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="/learn/what-is-crypto.html" class="footer-link">What is Crypto?</a>
+        <a href="/learn/how-to-buy.html" class="footer-link">How to Buy Bitcoin</a>
+        <a href="/learn/what-is-blockchain.html" class="footer-link">What is Blockchain?</a>
+        <a href="/learn/defi.html" class="footer-link">What is DeFi?</a>
+        <a href="/learn/nft.html" class="footer-link">What are NFTs?</a>
+        <a href="/learn/crypto-wallets.html" class="footer-link">Crypto Wallets Guide</a>
+        <a href="/learn/glossary.html" class="footer-link">Crypto Glossary</a>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="/about.html" class="footer-link">About Us</a>
+        <a href="/disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="/privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="/terms.html" class="footer-link">Terms of Service</a>
+        <a href="/contact.html" class="footer-link">Contact Us</a>
+        <a href="/advertise.html" class="footer-link">Advertise with Us</a>
+      </div>
+
+      <!-- Data Sources -->
+      <div class="footer-col">
+        <div class="footer-col-title">Data Sources</div>
+        <a href="https://www.coingecko.com" target="_blank" class="footer-link">CoinGecko API</a>
+        <a href="https://www.binance.com" target="_blank" class="footer-link">Binance WebSocket</a>
+        <a href="https://alternative.me/crypto/fear-and-greed-index/" target="_blank" class="footer-link">Fear & Greed Index</a>
+        <a href="https://min-api.cryptocompare.com" target="_blank" class="footer-link">CryptoCompare News</a>
+        <a href="https://www.coindesk.com" target="_blank" class="footer-link">CoinDesk News</a>
+        <div class="footer-col-title" style="margin-top:1rem">Disclaimer</div>
+        <p style="font-size:10px;color:var(--muted);line-height:1.6">Prices are for informational purposes only. Not financial advice.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>© 2026 BookMyCrypto.com. All Rights Reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="/privacy.html" class="footer-bottom-link">Privacy</a>
+        <a href="/terms.html" class="footer-bottom-link">Terms</a>
+        <a href="/disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="/contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script>
+function subscribeNewsletter() {
+  const email = document.getElementById('nlEmail').value;
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  document.getElementById('nlEmail').value = '';
+  alert('🎉 You\'re subscribed! Welcome to BookMyCrypto.');
+}
+
 const BINANCE_WS   = 'wss://stream.binance.com:9443/stream?streams=';
 const BINANCE_SYMS = ['btcusdt','ethusdt','bnbusdt','solusdt','xrpusdt','adausdt','dogeusdt','avaxusdt','dotusdt','maticusdt'];
 const IS_SERVER    = location.protocol !== 'file:';
