@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What is Blockchain? — BookMyCrypto Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--blue-dark:#0d3d99;--blue-light:#e8f0fe;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--text2:#334155;--muted:#94a3b8;--orange:#f97316;--purple:#7c3aed;--purple-light:#ede9fe;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(18,81,197,0.3);}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;display:flex;align-items:center;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;transition:all .15s;}
+    .back:hover{background:rgba(255,255,255,0.1);}
+
+    .hero{background:linear-gradient(135deg,#4c1d95 0%,#1251c5 100%);padding:3.5rem 2rem;color:#fff;text-align:center;}
+    .learn-tag{display:inline-block;background:rgba(255,255,255,0.15);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem;color:#c4b5fd;}
+    .hero h1{font-family:'Nunito',sans-serif;font-size:2.6rem;font-weight:900;letter-spacing:-1px;margin-bottom:.75rem;}
+    .hero h1 span{color:#fbbf24;}
+    .hero p{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;font-size:15px;}
+    .hero-meta{margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;font-size:12px;color:rgba(255,255,255,.5);}
+
+    .layout{max-width:1060px;margin:2.5rem auto;padding:0 2rem 4rem;display:grid;grid-template-columns:1fr 280px;gap:2rem;}
+    @media(max-width:780px){.layout{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    .card h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:2px solid var(--blue-light);}
+    .card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--blue);margin:1.25rem 0 .5rem;}
+    .card p{color:var(--text2);margin-bottom:.85rem;line-height:1.8;}
+    .card p:last-child{margin-bottom:0;}
+    .card ul,.card ol{padding-left:1.4rem;color:var(--text2);line-height:2.1;margin-bottom:.75rem;}
+
+    /* Block diagram */
+    .block-chain{display:flex;align-items:center;gap:0;overflow-x:auto;padding:1.5rem 0;margin:1rem 0;}
+    .block{background:var(--blue);color:#fff;border-radius:10px;padding:1rem 1.25rem;min-width:130px;text-align:center;flex-shrink:0;}
+    .block-num{font-size:10px;opacity:.6;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+    .block-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;margin-bottom:6px;}
+    .block-hash{font-family:monospace;font-size:9px;opacity:.5;word-break:break-all;line-height:1.4;}
+    .chain-arrow{font-size:1.4rem;color:var(--blue);margin:0 .5rem;flex-shrink:0;}
+
+    /* Comparison table */
+    .vs-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:13px;}
+    .vs-table th{padding:10px 14px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;}
+    .vs-table th:first-child{background:var(--bg);color:var(--muted);}
+    .vs-table th:nth-child(2){background:#dc262610;color:#dc2626;}
+    .vs-table th:nth-child(3){background:#1251c510;color:var(--blue);}
+    .vs-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);}
+    .vs-table tr:last-child td{border-bottom:none;}
+
+    /* Use case cards */
+    .use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1rem 0;}
+    .use-case{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
+    .use-case-icon{font-size:1.5rem;margin-bottom:8px;}
+    .use-case-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--text);margin-bottom:4px;}
+    .use-case-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+
+    .highlight-box{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin:1.25rem 0;}
+    .highlight-box p{color:var(--blue);font-weight:600;margin:0;font-size:14px;}
+
+    .sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;position:sticky;top:80px;}
+    .sidebar-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+    .learn-nav a{display:flex;align-items:center;gap:8px;text-decoration:none;padding:.6rem .75rem;border-radius:8px;font-size:12px;font-weight:600;color:var(--text2);transition:background .15s;margin-bottom:3px;}
+    .learn-nav a:hover{background:var(--blue-light);color:var(--blue);}
+    .learn-nav a.active{background:var(--blue);color:#fff;}
+    .fact-row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:13px;}
+    .fact-row:last-child{border-bottom:none;}
+    .fact-label{color:var(--muted);}
+    .fact-value{font-weight:600;color:var(--text);}
+
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:12px;border-top:1px solid var(--border);}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+
+<div class="hero">
+  <div class="learn-tag">📚 Learn Series</div>
+  <h1>What is <span>Blockchain?</span></h1>
+  <p>The revolutionary technology behind Bitcoin, Ethereum, and thousands of other cryptocurrencies — explained simply.</p>
+  <div class="hero-meta"><span>⏱ 9 min read</span><span>🟡 Intermediate</span><span>📅 Updated May 2026</span></div>
+</div>
+
+<div class="layout">
+  <main>
+
+    <div class="card">
+      <h2>The Google Docs Analogy</h2>
+      <p>Imagine a Google Doc that thousands of people have a copy of, simultaneously. When someone makes a change, everyone's copy updates instantly. No single person controls it — and nobody can secretly edit the document without everyone else noticing.</p>
+      <p>That's essentially what a blockchain is: a shared, distributed record of transactions that nobody can tamper with unilaterally.</p>
+      <div class="highlight-box">
+        <p>💡 A blockchain is a <em>chain of blocks</em>, where each block contains a group of transactions. Every block is linked to the previous one using cryptography, making the entire history permanent and tamper-evident.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Visualising the Chain</h2>
+      <p>Each block contains a batch of transactions, a timestamp, and a cryptographic "hash" of the previous block. This is what creates the chain:</p>
+      <div class="block-chain">
+        <div class="block">
+          <div class="block-num">Block #827,401</div>
+          <div class="block-title">₿ 2,345 txns</div>
+          <div class="block-hash">Prev: 0000a8f2...c19d</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="block">
+          <div class="block-num">Block #827,402</div>
+          <div class="block-title">₿ 1,890 txns</div>
+          <div class="block-hash">Prev: 00003b4c...e72a</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="block">
+          <div class="block-num">Block #827,403</div>
+          <div class="block-title">₿ 2,110 txns</div>
+          <div class="block-hash">Prev: 0000d91f...38b5</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="block" style="background:#f97316;">
+          <div class="block-num">Block #827,404</div>
+          <div class="block-title">₿ Latest</div>
+          <div class="block-hash">Mining now...</div>
+        </div>
+      </div>
+      <p>If you try to alter block #827,401, its hash changes. That breaks block #827,402's reference, which breaks #827,403, and so on. You'd need to recalculate every block after it — faster than all the other computers on the network combined. In practice, this is computationally impossible.</p>
+    </div>
+
+    <div class="card">
+      <h2>Blockchain vs Traditional Database</h2>
+      <table class="vs-table">
+        <tr><th>Feature</th><th>Traditional Database</th><th>Blockchain</th></tr>
+        <tr><td>Control</td><td>Single company/admin</td><td>Distributed — thousands of nodes</td></tr>
+        <tr><td>History</td><td>Can be edited or deleted</td><td>Immutable — permanent record</td></tr>
+        <tr><td>Transparency</td><td>Private — only owner sees data</td><td>Public — anyone can verify</td></tr>
+        <tr><td>Trust</td><td>Trust the company</td><td>Trust the code (math)</td></tr>
+        <tr><td>Speed</td><td>Very fast</td><td>Slower (seconds to minutes)</td></tr>
+        <tr><td>Cost</td><td>Low</td><td>Variable (transaction fees)</td></tr>
+        <tr><td>Failure point</td><td>Single server can fail</td><td>No single point of failure</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>How Transactions Get Confirmed</h2>
+      <h3>1. You broadcast a transaction</h3>
+      <p>When you send Bitcoin, your transaction is broadcast to thousands of nodes (computers) on the network, each running the Bitcoin software.</p>
+      <h3>2. Miners compete to add the block</h3>
+      <p>Specialised computers called miners compete to solve a complex mathematical puzzle. The winner gets to add the next block and earns newly created Bitcoin as a reward (currently 3.125 BTC per block).</p>
+      <h3>3. Consensus is reached</h3>
+      <p>Once a miner finds the solution, other nodes verify it instantly. If correct, the block is accepted and added to the chain by all participants.</p>
+      <h3>4. Your transaction is confirmed</h3>
+      <p>After 1 confirmation (one block added after yours), your transaction is secure. After 6 confirmations, it's considered irreversible.</p>
+    </div>
+
+    <div class="card">
+      <h2>Types of Blockchain</h2>
+      <ul>
+        <li><strong>Public Blockchain</strong> — Anyone can participate. Bitcoin and Ethereum are public. Fully transparent and decentralised.</li>
+        <li><strong>Private Blockchain</strong> — Controlled by a single organisation. Faster but centralised. Used by banks for internal systems.</li>
+        <li><strong>Consortium Blockchain</strong> — Controlled by a group of organisations. Used in supply chain and trade finance.</li>
+        <li><strong>Layer 2 Networks</strong> — Built on top of blockchains for faster, cheaper transactions. Examples: Lightning Network (on Bitcoin), Polygon (on Ethereum).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Real-World Uses Beyond Crypto</h2>
+      <div class="use-cases">
+        <div class="use-case"><div class="use-case-icon">🏥</div><div class="use-case-title">Healthcare Records</div><div class="use-case-desc">Secure, portable patient records accessible by any hospital without a centralised database owner.</div></div>
+        <div class="use-case"><div class="use-case-icon">🚢</div><div class="use-case-title">Supply Chain</div><div class="use-case-desc">Track goods from factory to consumer. Maersk uses blockchain to track 750+ shipping routes.</div></div>
+        <div class="use-case"><div class="use-case-icon">🗳️</div><div class="use-case-title">Voting Systems</div><div class="use-case-desc">Tamper-proof digital voting that's transparent and auditable without revealing individual votes.</div></div>
+        <div class="use-case"><div class="use-case-icon">🏠</div><div class="use-case-title">Property Registry</div><div class="use-case-desc">Land title records on a blockchain can't be forged. Several countries are piloting this.</div></div>
+        <div class="use-case"><div class="use-case-icon">💊</div><div class="use-case-title">Drug Authenticity</div><div class="use-case-desc">Verify pharmaceutical supply chains to prevent counterfeit medicines from reaching patients.</div></div>
+        <div class="use-case"><div class="use-case-icon">🎵</div><div class="use-case-title">Music Royalties</div><div class="use-case-desc">Smart contracts can pay musicians instantly when their song is streamed, with no middlemen.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations of Blockchain</h2>
+      <p>Blockchain is powerful but not magic. It has real limitations:</p>
+      <ul>
+        <li><strong>Scalability</strong> — Bitcoin processes ~7 transactions per second. Visa handles 65,000. This is improving with Layer 2 solutions.</li>
+        <li><strong>Energy use</strong> — Proof-of-Work blockchains (like Bitcoin) consume significant electricity. Ethereum switched to Proof-of-Stake in 2022, cutting energy by 99.95%.</li>
+        <li><strong>Garbage in, garbage out</strong> — A blockchain can verify that data wasn't tampered with after it was entered, but it can't verify the data was accurate to begin with.</li>
+        <li><strong>Irreversibility</strong> — Sending to the wrong address is permanent. There's no customer support to reverse it.</li>
+        <li><strong>Regulatory uncertainty</strong> — The legal status of blockchain-based assets varies by country and is still evolving.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Key Facts</h3>
+      <div class="fact-row"><span class="fact-label">Invented</span><span class="fact-value">2008 (Satoshi)</span></div>
+      <div class="fact-row"><span class="fact-label">Bitcoin block time</span><span class="fact-value">~10 min</span></div>
+      <div class="fact-row"><span class="fact-label">Ethereum block time</span><span class="fact-value">~12 sec</span></div>
+      <div class="fact-row"><span class="fact-label">BTC total supply</span><span class="fact-value">21 million</span></div>
+      <div class="fact-row"><span class="fact-label">Public blockchains</span><span class="fact-value">100+</span></div>
+    </div>
+    <div class="sidebar-card">
+      <h3>Learn More</h3>
+      <nav class="learn-nav">
+        <a href="/learn/what-is-crypto.html"><span>🪙</span>What is Crypto?</a>
+        <a href="/learn/how-to-buy.html"><span>🛒</span>How to Buy Bitcoin</a>
+        <a href="/learn/what-is-blockchain.html" class="active"><span>⛓️</span>What is Blockchain?</a>
+        <a href="/learn/defi.html"><span>🏦</span>What is DeFi?</a>
+        <a href="/learn/nft.html"><span>🖼️</span>What are NFTs?</a>
+        <a href="/learn/crypto-wallets.html"><span>👛</span>Crypto Wallets</a>
+        <a href="/learn/glossary.html"><span>📖</span>Crypto Glossary</a>
+      </nav>
+    </div>
+  </aside>
+</div>
+
+<footer>© 2026 BookMyCrypto.com. All Rights Reserved. — <em>Not financial advice.</em></footer>
+</body>
+</html>
