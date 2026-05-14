@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Wallets Guide — BookMyCrypto Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--blue-dark:#0d3d99;--blue-light:#e8f0fe;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--text2:#334155;--muted:#94a3b8;--orange:#f97316;--amber:#d97706;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(18,81,197,0.3);}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;display:flex;align-items:center;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;transition:all .15s;}
+    .back:hover{background:rgba(255,255,255,0.1);}
+
+    .hero{background:linear-gradient(135deg,#92400e 0%,#1251c5 100%);padding:3.5rem 2rem;color:#fff;text-align:center;}
+    .learn-tag{display:inline-block;background:rgba(255,255,255,0.15);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem;color:#fcd34d;}
+    .hero h1{font-family:'Nunito',sans-serif;font-size:2.6rem;font-weight:900;letter-spacing:-1px;margin-bottom:.75rem;}
+    .hero h1 span{color:#fcd34d;}
+    .hero p{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;font-size:15px;}
+    .hero-meta{margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;font-size:12px;color:rgba(255,255,255,.5);}
+
+    .layout{max-width:1060px;margin:2.5rem auto;padding:0 2rem 4rem;display:grid;grid-template-columns:1fr 280px;gap:2rem;}
+    @media(max-width:780px){.layout{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    .card h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:2px solid var(--blue-light);}
+    .card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--blue);margin:1.25rem 0 .5rem;}
+    .card p{color:var(--text2);margin-bottom:.85rem;line-height:1.8;}
+    .card p:last-child{margin-bottom:0;}
+    .card ul{padding-left:1.4rem;color:var(--text2);line-height:2.1;margin-bottom:.75rem;}
+
+    /* Wallet type cards */
+    .wallet-types{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1rem 0;}
+    .wallet-type{border-radius:12px;padding:1.5rem;border:2px solid var(--border);}
+    .wallet-type.hot{border-color:#f97316;background:#fff7ed;}
+    .wallet-type.cold{border-color:var(--blue);background:var(--blue-light);}
+    .wallet-type h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.5rem;margin-top:0;}
+    .wallet-type.hot h3{color:#c2410c;}
+    .wallet-type.cold h3{color:var(--blue);}
+    .wallet-type p{font-size:13px;margin-bottom:.5rem;}
+    .wallet-type ul{font-size:12px;line-height:1.9;}
+
+    /* Wallet recommendation table */
+    .wallet-table{width:100%;border-collapse:collapse;font-size:13px;margin:1rem 0;}
+    .wallet-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;}
+    .wallet-table th:first-child{border-radius:8px 0 0 0;}
+    .wallet-table th:last-child{border-radius:0 8px 0 0;}
+    .wallet-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:middle;}
+    .wallet-table tr:last-child td{border-bottom:none;}
+    .wallet-table tr:nth-child(even) td{background:var(--bg);}
+    .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
+    .badge.green{background:#dcfce7;color:#15803d;}
+    .badge.orange{background:#fff7ed;color:#c2410c;}
+    .badge.blue{background:var(--blue-light);color:var(--blue);}
+
+    /* Keys explanation */
+    .keys-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+    .key-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
+    .key-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;color:var(--text);margin-bottom:.4rem;}
+    .key-code{font-family:monospace;font-size:10px;background:var(--border);padding:8px;border-radius:6px;word-break:break-all;color:var(--text2);margin:6px 0;line-height:1.6;}
+    .key-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+
+    .warning{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:1.25rem 1.5rem;margin:1.25rem 0;font-size:13px;color:#92400e;line-height:1.7;}
+    .highlight-box{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin:1.25rem 0;}
+    .highlight-box p{color:var(--blue);font-weight:600;margin:0;font-size:14px;}
+
+    .sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;position:sticky;top:80px;}
+    .sidebar-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+    .learn-nav a{display:flex;align-items:center;gap:8px;text-decoration:none;padding:.6rem .75rem;border-radius:8px;font-size:12px;font-weight:600;color:var(--text2);transition:background .15s;margin-bottom:3px;}
+    .learn-nav a:hover{background:var(--blue-light);color:var(--blue);}
+    .learn-nav a.active{background:var(--blue);color:#fff;}
+    .fact-row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:13px;}
+    .fact-row:last-child{border-bottom:none;}
+    .fact-label{color:var(--muted);}
+    .fact-value{font-weight:600;color:var(--text);}
+
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:12px;border-top:1px solid var(--border);}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+
+<div class="hero">
+  <div class="learn-tag">📚 Learn Series</div>
+  <h1>Crypto <span>Wallets</span> Guide</h1>
+  <p>Everything you need to know about storing crypto safely — hot wallets, cold wallets, seed phrases and more.</p>
+  <div class="hero-meta"><span>⏱ 9 min read</span><span>🟡 Intermediate</span><span>📅 Updated May 2026</span></div>
+</div>
+
+<div class="layout">
+  <main>
+
+    <div class="card">
+      <h2>What is a Crypto Wallet?</h2>
+      <p>A crypto wallet doesn't actually store your cryptocurrency. Your crypto lives on the blockchain — the wallet stores your <strong>private keys</strong>, which are the passwords that prove you own those coins and authorise transactions.</p>
+      <p>Think of it like this: the blockchain is the bank, your public key is your account number, and your private key is your PIN. Lose the PIN, lose access to the account — permanently.</p>
+      <div class="highlight-box">
+        <p>🔑 "Not your keys, not your coins." If you leave crypto on an exchange, the exchange holds the private keys. You're trusting them not to lose or steal your funds. Exchanges have been hacked and collapsed.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Public Key vs Private Key</h2>
+      <div class="keys-grid">
+        <div class="key-box">
+          <div class="key-title">🌐 Public Key (Address)</div>
+          <div class="key-code">1A1zP1eP5QGefi2DMPTfTL5SLmv7Divf Na</div>
+          <div class="key-desc">Share this freely — it's your receiving address. Like a bank account number. Anyone can send you crypto at this address.</div>
+        </div>
+        <div class="key-box">
+          <div class="key-title">🔐 Private Key</div>
+          <div class="key-code">5KJvsngHeMpm884wtkJNzQGaCErckhHJBGFsvd3VyK5qMZXj3hS</div>
+          <div class="key-desc">NEVER share this. It's like your password + ATM PIN combined. Anyone with this key controls your crypto entirely.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Hot Wallets vs Cold Wallets</h2>
+      <div class="wallet-types">
+        <div class="wallet-type hot">
+          <h3>🔥 Hot Wallets (Connected)</h3>
+          <p>Software wallets connected to the internet. Easy to use, great for daily transactions and small amounts.</p>
+          <ul>
+            <li>✅ Free to use</li>
+            <li>✅ Instant access</li>
+            <li>✅ Easy DeFi/NFT access</li>
+            <li>⚠️ Vulnerable to hacks</li>
+            <li>⚠️ Phishing risks</li>
+          </ul>
+        </div>
+        <div class="wallet-type cold">
+          <h3>❄️ Cold Wallets (Offline)</h3>
+          <p>Hardware or paper wallets kept completely offline. Best for storing large amounts long-term.</p>
+          <ul>
+            <li>✅ Maximum security</li>
+            <li>✅ Immune to online hacks</li>
+            <li>✅ You control the keys</li>
+            <li>⚠️ Costs ₹5,000–₹15,000</li>
+            <li>⚠️ Less convenient</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Types of Wallets</h2>
+      <h3>Software Wallets (Hot)</h3>
+      <ul>
+        <li><strong>Mobile wallets</strong> — Trust Wallet, Coinbase Wallet. Convenient for everyday use on your phone.</li>
+        <li><strong>Browser extensions</strong> — MetaMask. Essential for DeFi and NFTs. Works in Chrome/Firefox.</li>
+        <li><strong>Desktop wallets</strong> — Electrum (Bitcoin), Exodus. Runs on your computer with more features than mobile.</li>
+        <li><strong>Exchange wallets</strong> — CoinDCX, WazirX. Easiest for beginners but custodial (they hold the keys).</li>
+      </ul>
+      <h3>Hardware Wallets (Cold)</h3>
+      <ul>
+        <li><strong>Ledger</strong> — Market leader. Nano S Plus (~₹5,500) and Nano X (~₹10,000). Supports 5,500+ coins.</li>
+        <li><strong>Trezor</strong> — Open-source alternative. Model One (~₹5,000) and Model T (~₹15,000).</li>
+        <li><strong>Coldcard</strong> — Bitcoin-only, preferred by security maximalists.</li>
+      </ul>
+      <h3>Paper Wallets (Cold)</h3>
+      <p>A printed piece of paper with your public and private keys (usually as QR codes). Free but fragile — susceptible to fire, water, or simply being thrown away by mistake.</p>
+    </div>
+
+    <div class="card">
+      <h2>Popular Wallets Compared</h2>
+      <table class="wallet-table">
+        <tr><th>Wallet</th><th>Type</th><th>Cost</th><th>Best For</th></tr>
+        <tr><td><strong>MetaMask</strong></td><td><span class="badge orange">Hot / Browser</span></td><td>Free</td><td>Ethereum, DeFi, NFTs</td></tr>
+        <tr><td><strong>Trust Wallet</strong></td><td><span class="badge orange">Hot / Mobile</span></td><td>Free</td><td>Multi-chain, beginners</td></tr>
+        <tr><td><strong>Phantom</strong></td><td><span class="badge orange">Hot / Browser</span></td><td>Free</td><td>Solana ecosystem</td></tr>
+        <tr><td><strong>Ledger Nano S+</strong></td><td><span class="badge blue">Cold / Hardware</span></td><td>~₹5,500</td><td>Long-term storage</td></tr>
+        <tr><td><strong>Ledger Nano X</strong></td><td><span class="badge blue">Cold / Hardware</span></td><td>~₹10,000</td><td>Mobile + Bluetooth</td></tr>
+        <tr><td><strong>Trezor One</strong></td><td><span class="badge blue">Cold / Hardware</span></td><td>~₹5,000</td><td>Open-source security</td></tr>
+        <tr><td><strong>Electrum</strong></td><td><span class="badge orange">Hot / Desktop</span></td><td>Free</td><td>Bitcoin-only, advanced</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Understanding Your Seed Phrase</h2>
+      <p>When you create a new wallet, you're given a <strong>seed phrase</strong> (also called a recovery phrase or mnemonic): 12 or 24 random words that can regenerate your entire wallet.</p>
+      <div class="key-box" style="margin:1rem 0;background:#fff7ed;border-color:#fed7aa;">
+        <div class="key-code" style="background:#fef3c7;color:#92400e;">abandon ability able about above absent absorb abstract absurd abuse access accident</div>
+      </div>
+      <p><strong>Critical rules for your seed phrase:</strong></p>
+      <ul>
+        <li>Write it down on paper — never type it into any website or app</li>
+        <li>Store it in at least 2 physical locations (home + bank safe deposit box)</li>
+        <li>Never photograph it or store it digitally (cloud, email, photos)</li>
+        <li>Never share it with anyone — no wallet, exchange, or support team will ever need it</li>
+        <li>Anyone with your seed phrase has complete control of your funds</li>
+      </ul>
+      <div class="warning">⚠️ The most common crypto theft happens when users are tricked into entering their seed phrase on fake wallet websites. Legitimate wallets NEVER ask for your seed phrase.</div>
+    </div>
+
+    <div class="card">
+      <h2>Which Wallet Should You Use?</h2>
+      <ul>
+        <li><strong>Complete beginner with small amounts (₹500–₹50,000):</strong> Leave on a reputable Indian exchange like CoinDCX. Use their app. Simple and insured.</li>
+        <li><strong>Getting into DeFi or NFTs:</strong> Set up MetaMask. Keep only what you need for transactions in it.</li>
+        <li><strong>Holding significant amounts (₹1L+):</strong> Buy a Ledger or Trezor. Move most funds there. Only keep trading amounts on exchanges.</li>
+        <li><strong>Long-term Bitcoin holder:</strong> Consider Electrum + Ledger combination for maximum security.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Wallet Basics</h3>
+      <div class="fact-row"><span class="fact-label">Ledger price</span><span class="fact-value">from ₹5,500</span></div>
+      <div class="fact-row"><span class="fact-label">Seed phrase</span><span class="fact-value">12 or 24 words</span></div>
+      <div class="fact-row"><span class="fact-label">Best free wallet</span><span class="fact-value">MetaMask</span></div>
+      <div class="fact-row"><span class="fact-label">Best hardware</span><span class="fact-value">Ledger Nano X</span></div>
+      <div class="fact-row"><span class="fact-label">India buy from</span><span class="fact-value">ledger.com (official)</span></div>
+    </div>
+    <div class="sidebar-card">
+      <h3>Learn More</h3>
+      <nav class="learn-nav">
+        <a href="/learn/what-is-crypto.html"><span>🪙</span>What is Crypto?</a>
+        <a href="/learn/how-to-buy.html"><span>🛒</span>How to Buy Bitcoin</a>
+        <a href="/learn/what-is-blockchain.html"><span>⛓️</span>What is Blockchain?</a>
+        <a href="/learn/defi.html"><span>🏦</span>What is DeFi?</a>
+        <a href="/learn/nft.html"><span>🖼️</span>What are NFTs?</a>
+        <a href="/learn/crypto-wallets.html" class="active"><span>👛</span>Crypto Wallets</a>
+        <a href="/learn/glossary.html"><span>📖</span>Crypto Glossary</a>
+      </nav>
+    </div>
+  </aside>
+</div>
+
+<footer>© 2026 BookMyCrypto.com. All Rights Reserved. — <em>Not financial advice.</em></footer>
+</body>
+</html>
