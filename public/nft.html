@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What are NFTs? — BookMyCrypto Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--blue-dark:#0d3d99;--blue-light:#e8f0fe;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--text2:#334155;--muted:#94a3b8;--purple:#7c3aed;--purple-light:#ede9fe;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(18,81,197,0.3);}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;display:flex;align-items:center;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;transition:all .15s;}
+    .back:hover{background:rgba(255,255,255,0.1);}
+
+    .hero{background:linear-gradient(135deg,#4c1d95 0%,#be185d 100%);padding:3.5rem 2rem;color:#fff;text-align:center;}
+    .learn-tag{display:inline-block;background:rgba(255,255,255,0.15);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem;color:#f9a8d4;}
+    .hero h1{font-family:'Nunito',sans-serif;font-size:2.6rem;font-weight:900;letter-spacing:-1px;margin-bottom:.75rem;}
+    .hero h1 span{color:#fbbf24;}
+    .hero p{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;font-size:15px;}
+    .hero-meta{margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;font-size:12px;color:rgba(255,255,255,.5);}
+
+    .layout{max-width:1060px;margin:2.5rem auto;padding:0 2rem 4rem;display:grid;grid-template-columns:1fr 280px;gap:2rem;}
+    @media(max-width:780px){.layout{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    .card h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:2px solid var(--blue-light);}
+    .card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--blue);margin:1.25rem 0 .5rem;}
+    .card p{color:var(--text2);margin-bottom:.85rem;line-height:1.8;}
+    .card p:last-child{margin-bottom:0;}
+    .card ul{padding-left:1.4rem;color:var(--text2);line-height:2.1;margin-bottom:.75rem;}
+
+    /* Fungible vs Non-fungible */
+    .fn-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+    .fn-col{border-radius:12px;padding:1.5rem;border:1px solid var(--border);}
+    .fn-col.fungible{background:#f0fdf4;}
+    .fn-col.nonfungible{background:var(--purple-light);}
+    .fn-col h4{font-family:'Nunito',sans-serif;font-weight:800;margin-bottom:.75rem;}
+    .fn-col.fungible h4{color:#15803d;}
+    .fn-col.nonfungible h4{color:var(--purple);}
+    .fn-col p{font-size:13px;color:var(--text2);line-height:1.7;}
+    .fn-example{margin-top:.75rem;font-size:12px;font-style:italic;color:var(--muted);}
+
+    /* Use cases */
+    .use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0;}
+    .use-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;}
+    .use-icon{font-size:2rem;margin-bottom:8px;}
+    .use-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--text);margin-bottom:4px;}
+    .use-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+
+    /* Famous sales */
+    .sale-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:13px;}
+    .sale-table th{background:var(--purple);color:#fff;padding:10px 14px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;}
+    .sale-table th:first-child{border-radius:8px 0 0 0;}
+    .sale-table th:last-child{border-radius:0 8px 0 0;}
+    .sale-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);}
+    .sale-table tr:last-child td{border-bottom:none;}
+    .sale-table tr:nth-child(even) td{background:var(--bg);}
+
+    .warning{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:1.25rem 1.5rem;margin:1.25rem 0;font-size:13px;color:#92400e;line-height:1.7;}
+    .highlight-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin:1.25rem 0;}
+    .highlight-box p{color:var(--purple);font-weight:600;margin:0;font-size:14px;}
+
+    .sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;position:sticky;top:80px;}
+    .sidebar-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+    .learn-nav a{display:flex;align-items:center;gap:8px;text-decoration:none;padding:.6rem .75rem;border-radius:8px;font-size:12px;font-weight:600;color:var(--text2);transition:background .15s;margin-bottom:3px;}
+    .learn-nav a:hover{background:var(--blue-light);color:var(--blue);}
+    .learn-nav a.active{background:var(--blue);color:#fff;}
+    .fact-row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:13px;}
+    .fact-row:last-child{border-bottom:none;}
+    .fact-label{color:var(--muted);}
+    .fact-value{font-weight:600;color:var(--text);}
+
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:12px;border-top:1px solid var(--border);}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+
+<div class="hero">
+  <div class="learn-tag">📚 Learn Series</div>
+  <h1>What are <span>NFTs?</span></h1>
+  <p>Non-Fungible Tokens explained — from million-dollar jpegs to real-world ownership and digital identity.</p>
+  <div class="hero-meta"><span>⏱ 8 min read</span><span>🟢 Beginner</span><span>📅 Updated May 2026</span></div>
+</div>
+
+<div class="layout">
+  <main>
+
+    <div class="card">
+      <h2>What Does "Non-Fungible" Mean?</h2>
+      <p>To understand NFTs, you first need to understand the difference between fungible and non-fungible assets:</p>
+      <div class="fn-compare">
+        <div class="fn-col fungible">
+          <h4>🔄 Fungible</h4>
+          <p>Interchangeable. One unit is identical to every other unit. You can swap them freely.</p>
+          <div class="fn-example">Examples: A ₹100 note, 1 Bitcoin, 1 litre of petrol.</div>
+        </div>
+        <div class="fn-col nonfungible">
+          <h4>🖼️ Non-Fungible</h4>
+          <p>Unique. Each item is one-of-a-kind or limited. You cannot swap like-for-like.</p>
+          <div class="fn-example">Examples: The Mona Lisa, your passport, a specific seat at a concert.</div>
+        </div>
+      </div>
+      <p>An <strong>NFT (Non-Fungible Token)</strong> is a unique digital certificate stored on a blockchain that proves ownership of a specific digital (or physical) item. No two NFTs are identical — each has its own token ID and metadata.</p>
+    </div>
+
+    <div class="card">
+      <h2>How NFTs Work</h2>
+      <p>When an NFT is created ("minted"), a record is added to the blockchain containing:</p>
+      <ul>
+        <li>A unique token ID that distinguishes it from every other token</li>
+        <li>The wallet address of the current owner</li>
+        <li>Metadata — a link to the actual file (image, video, music, etc.)</li>
+        <li>A complete history of every previous owner</li>
+      </ul>
+      <div class="highlight-box">
+        <p>💡 The NFT itself isn't the file — it's the ownership record. The actual image or video is typically stored on IPFS (a distributed file system) or a server. The blockchain just proves who owns the certificate.</p>
+      </div>
+      <p>This is why people ask "why can't I just screenshot it?" — you can, but you don't own the blockchain record of ownership. It's like photographing the Mona Lisa. You have the image, but you don't own the painting.</p>
+    </div>
+
+    <div class="card">
+      <h2>What Can Be an NFT?</h2>
+      <div class="use-grid">
+        <div class="use-card"><div class="use-icon">🎨</div><div class="use-title">Digital Art</div><div class="use-desc">The original NFT boom. Beeple's "Everydays" sold for $69M.</div></div>
+        <div class="use-card"><div class="use-icon">🎮</div><div class="use-title">Gaming Items</div><div class="use-desc">Weapons, skins, and characters that you truly own and can sell.</div></div>
+        <div class="use-card"><div class="use-icon">🎵</div><div class="use-title">Music</div><div class="use-desc">Artists sell albums and songs directly to fans with royalties.</div></div>
+        <div class="use-card"><div class="use-icon">⚽</div><div class="use-title">Sports Moments</div><div class="use-desc">NBA Top Shot sells video highlights as collectible NFTs.</div></div>
+        <div class="use-card"><div class="use-icon">🏠</div><div class="use-title">Real Estate</div><div class="use-desc">Tokenised property ownership in both virtual and real worlds.</div></div>
+        <div class="use-card"><div class="use-icon">🎫</div><div class="use-title">Event Tickets</div><div class="use-desc">Tickets that can't be counterfeited and can be resold transparently.</div></div>
+        <div class="use-card"><div class="use-icon">🆔</div><div class="use-title">Digital Identity</div><div class="use-desc">Ethereum Name Service (.eth domains) as identity NFTs.</div></div>
+        <div class="use-card"><div class="use-icon">📜</div><div class="use-title">Certificates</div><div class="use-desc">Degrees and credentials stored as verifiable on-chain NFTs.</div></div>
+        <div class="use-card"><div class="use-icon">💎</div><div class="use-title">Membership</div><div class="use-desc">NFTs as exclusive club memberships with real-world perks.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Famous NFT Sales</h2>
+      <table class="sale-table">
+        <tr><th>NFT</th><th>Artist/Project</th><th>Sale Price</th><th>Year</th></tr>
+        <tr><td><strong>Everydays: The First 5000 Days</strong></td><td>Beeple</td><td>$69.3M</td><td>2021</td></tr>
+        <tr><td><strong>The Merge</strong></td><td>Pak</td><td>$91.8M</td><td>2021</td></tr>
+        <tr><td><strong>CryptoPunk #5822</strong></td><td>Larva Labs</td><td>$23.7M</td><td>2022</td></tr>
+        <tr><td><strong>Bored Ape #8817</strong></td><td>BAYC</td><td>$3.4M</td><td>2021</td></tr>
+        <tr><td><strong>Clock</strong></td><td>Pak / AssangeDAO</td><td>$52.7M</td><td>2022</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>The NFT Market Today (2026)</h2>
+      <p>After the explosive 2021–2022 boom, the NFT market corrected sharply. Daily trading volume fell from billions to millions. Many speculative collections lost 95%+ of their value.</p>
+      <p>However, the underlying technology found more sustainable uses:</p>
+      <ul>
+        <li><strong>Gaming</strong> — in-game assets remain a major use case</li>
+        <li><strong>Digital identity</strong> — ENS domains and on-chain credentials are growing</li>
+        <li><strong>Loyalty programs</strong> — brands use NFTs as digital membership cards</li>
+        <li><strong>Real-world assets (RWAs)</strong> — tokenising physical assets like real estate and commodities</li>
+        <li><strong>Music & creator royalties</strong> — a more fair revenue model for artists</li>
+      </ul>
+      <div class="warning">⚠️ The speculative NFT art market is highly illiquid. Most JPEGs from the 2021 bubble are worth a fraction of their peak price. Approach purely speculative NFTs with extreme caution.</div>
+    </div>
+
+    <div class="card">
+      <h2>How to Buy an NFT</h2>
+      <p>The process is simpler than it sounds:</p>
+      <ul>
+        <li>Set up a crypto wallet (MetaMask is most common)</li>
+        <li>Buy Ethereum (ETH) — most NFTs use Ethereum</li>
+        <li>Connect your wallet to an NFT marketplace</li>
+        <li>Browse, bid, or buy — like an online auction house</li>
+      </ul>
+      <p><strong>Major NFT marketplaces:</strong> OpenSea (largest), Blur (trader-focused), Magic Eden (multi-chain), Rarible, Foundation (curated art).</p>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>NFTs at a Glance</h3>
+      <div class="fact-row"><span class="fact-label">Standard</span><span class="fact-value">ERC-721 / ERC-1155</span></div>
+      <div class="fact-row"><span class="fact-label">Main chain</span><span class="fact-value">Ethereum</span></div>
+      <div class="fact-row"><span class="fact-label">Largest sale</span><span class="fact-value">$91.8M (The Merge)</span></div>
+      <div class="fact-row"><span class="fact-label">Largest market</span><span class="fact-value">OpenSea</span></div>
+      <div class="fact-row"><span class="fact-label">India tax</span><span class="fact-value">30% on gains</span></div>
+    </div>
+    <div class="sidebar-card">
+      <h3>Learn More</h3>
+      <nav class="learn-nav">
+        <a href="/learn/what-is-crypto.html"><span>🪙</span>What is Crypto?</a>
+        <a href="/learn/how-to-buy.html"><span>🛒</span>How to Buy Bitcoin</a>
+        <a href="/learn/what-is-blockchain.html"><span>⛓️</span>What is Blockchain?</a>
+        <a href="/learn/defi.html"><span>🏦</span>What is DeFi?</a>
+        <a href="/learn/nft.html" class="active"><span>🖼️</span>What are NFTs?</a>
+        <a href="/learn/crypto-wallets.html"><span>👛</span>Crypto Wallets</a>
+        <a href="/learn/glossary.html"><span>📖</span>Crypto Glossary</a>
+      </nav>
+    </div>
+  </aside>
+</div>
+
+<footer>© 2026 BookMyCrypto.com. All Rights Reserved. — <em>Not financial advice.</em></footer>
+</body>
+</html>

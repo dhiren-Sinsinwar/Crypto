@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What is DeFi? — BookMyCrypto Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--blue-dark:#0d3d99;--blue-light:#e8f0fe;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--text2:#334155;--muted:#94a3b8;--green:#16a34a;--green-bg:#f0fdf4;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(18,81,197,0.3);}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;display:flex;align-items:center;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;transition:all .15s;}
+    .back:hover{background:rgba(255,255,255,0.1);}
+
+    .hero{background:linear-gradient(135deg,#065f46 0%,#1251c5 100%);padding:3.5rem 2rem;color:#fff;text-align:center;}
+    .learn-tag{display:inline-block;background:rgba(255,255,255,0.15);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem;color:#6ee7b7;}
+    .hero h1{font-family:'Nunito',sans-serif;font-size:2.6rem;font-weight:900;letter-spacing:-1px;margin-bottom:.75rem;}
+    .hero h1 span{color:#34d399;}
+    .hero p{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;font-size:15px;}
+    .hero-meta{margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;font-size:12px;color:rgba(255,255,255,.5);}
+
+    .layout{max-width:1060px;margin:2.5rem auto;padding:0 2rem 4rem;display:grid;grid-template-columns:1fr 280px;gap:2rem;}
+    @media(max-width:780px){.layout{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    .card h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:2px solid var(--blue-light);}
+    .card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--blue);margin:1.25rem 0 .5rem;}
+    .card p{color:var(--text2);margin-bottom:.85rem;line-height:1.8;}
+    .card p:last-child{margin-bottom:0;}
+    .card ul{padding-left:1.4rem;color:var(--text2);line-height:2.1;margin-bottom:.75rem;}
+
+    /* DeFi vs TradFi */
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+    .compare-col{border-radius:12px;padding:1.5rem;}
+    .compare-col.trad{background:#fff7ed;border:1px solid #fed7aa;}
+    .compare-col.defi{background:#f0fdf4;border:1px solid #bbf7d0;}
+    .compare-col h4{font-family:'Nunito',sans-serif;font-weight:800;margin-bottom:.75rem;}
+    .compare-col.trad h4{color:#c2410c;}
+    .compare-col.defi h4{color:#15803d;}
+    .compare-col li{font-size:13px;color:var(--text2);line-height:2.1;padding-left:0;}
+
+    /* Protocol cards */
+    .protocol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1rem 0;}
+    .protocol{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
+    .protocol-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem;}
+    .protocol-icon{font-size:1.4rem;}
+    .protocol-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;color:var(--text);}
+    .protocol-type{font-size:10px;color:var(--muted);background:var(--blue-light);color:var(--blue);padding:2px 7px;border-radius:10px;font-weight:600;}
+    .protocol-desc{font-size:12px;color:var(--text2);line-height:1.6;}
+
+    /* Stats */
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0;}
+    .stat-box{background:var(--green-bg);border:1px solid #bbf7d0;border-radius:10px;padding:1.25rem;text-align:center;}
+    .stat-num{font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:var(--green);}
+    .stat-label{font-size:11px;color:var(--muted);margin-top:4px;}
+
+    .warning{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:1.25rem 1.5rem;margin:1.25rem 0;font-size:13px;color:#92400e;line-height:1.7;}
+    .highlight-box{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin:1.25rem 0;}
+    .highlight-box p{color:var(--blue);font-weight:600;margin:0;font-size:14px;}
+
+    .sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;position:sticky;top:80px;}
+    .sidebar-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+    .learn-nav a{display:flex;align-items:center;gap:8px;text-decoration:none;padding:.6rem .75rem;border-radius:8px;font-size:12px;font-weight:600;color:var(--text2);transition:background .15s;margin-bottom:3px;}
+    .learn-nav a:hover{background:var(--blue-light);color:var(--blue);}
+    .learn-nav a.active{background:var(--blue);color:#fff;}
+    .fact-row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:13px;}
+    .fact-row:last-child{border-bottom:none;}
+    .fact-label{color:var(--muted);}
+    .fact-value{font-weight:600;color:var(--text);}
+
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:12px;border-top:1px solid var(--border);}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+
+<div class="hero">
+  <div class="learn-tag">📚 Learn Series</div>
+  <h1>What is <span>DeFi?</span></h1>
+  <p>Decentralised Finance is rebuilding banking without banks. Here's everything you need to know.</p>
+  <div class="hero-meta"><span>⏱ 10 min read</span><span>🟡 Intermediate</span><span>📅 Updated May 2026</span></div>
+</div>
+
+<div class="layout">
+  <main>
+
+    <div class="card">
+      <h2>DeFi in Plain English</h2>
+      <p><strong>DeFi (Decentralised Finance)</strong> is a collection of financial services — lending, borrowing, trading, earning interest — that run entirely on blockchains, with no banks, no brokers, and no paperwork required.</p>
+      <p>Instead of a bank deciding if you can borrow money, DeFi uses <strong>smart contracts</strong> — self-executing code that automatically enforces the rules. If you provide collateral, you get a loan. Instantly. At any time. Anywhere in the world.</p>
+      <div class="highlight-box">
+        <p>💡 DeFi's total value locked (TVL) — money deposited into DeFi protocols — peaked at over $180 billion in 2021. As of 2026, it's stabilised around $60–90 billion, representing a mature, active ecosystem.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>DeFi vs Traditional Finance</h2>
+      <div class="compare-grid">
+        <div class="compare-col trad">
+          <h4>🏦 Traditional Finance</h4>
+          <ul>
+            <li>Banks hold your money</li>
+            <li>Need ID / KYC to access</li>
+            <li>Opening hours 9–5</li>
+            <li>Days for international transfers</li>
+            <li>Bank can freeze your account</li>
+            <li>Low savings interest rates</li>
+            <li>Credit score determines loans</li>
+          </ul>
+        </div>
+        <div class="compare-col defi">
+          <h4>⚡ DeFi</h4>
+          <ul>
+            <li>You hold your own assets</li>
+            <li>Just need a crypto wallet</li>
+            <li>Available 24/7/365</li>
+            <li>Instant global settlements</li>
+            <li>No one can freeze your wallet</li>
+            <li>Higher yields (with higher risk)</li>
+            <li>Collateral determines loans</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>The DeFi Ecosystem</h2>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">$70B+</div><div class="stat-label">Total Value Locked</div></div>
+        <div class="stat-box"><div class="stat-num">500+</div><div class="stat-label">Active Protocols</div></div>
+        <div class="stat-box"><div class="stat-num">5M+</div><div class="stat-label">Unique Users</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Major DeFi Categories</h2>
+
+      <h3>🔁 Decentralised Exchanges (DEXs)</h3>
+      <p>Trade crypto directly from your wallet without an exchange holding your funds. Uniswap, Curve, and dYdX let you swap tokens instantly. Prices are set by liquidity pools (pools of user-deposited tokens) rather than order books.</p>
+
+      <h3>🏦 Lending & Borrowing</h3>
+      <p>Deposit crypto to earn interest, or borrow against your crypto holdings. Aave and Compound are the market leaders. Loans are over-collateralised — you must put up more than you borrow — eliminating the need for credit checks.</p>
+
+      <h3>🌾 Yield Farming & Liquidity Mining</h3>
+      <p>Provide liquidity to DEXs or lending protocols and earn fees plus governance token rewards in return. Yields can be high but risks include smart contract bugs and "impermanent loss."</p>
+
+      <h3>💰 Stablecoins</h3>
+      <p>Crypto pegged to the dollar or other assets, essential for DeFi. DAI is a decentralised stablecoin created by the Maker protocol — backed by other crypto, not a bank holding dollars.</p>
+
+      <h3>📈 Derivatives</h3>
+      <p>Platforms like GMX and dYdX offer perpetual futures and options trading on-chain, with no KYC required and positions controlled entirely by smart contracts.</p>
+    </div>
+
+    <div class="card">
+      <h2>Popular DeFi Protocols</h2>
+      <div class="protocol-grid">
+        <div class="protocol">
+          <div class="protocol-header"><span class="protocol-icon">🦄</span><span class="protocol-name">Uniswap</span><span class="protocol-type">DEX</span></div>
+          <div class="protocol-desc">Largest decentralised exchange. Over $1T in cumulative trading volume. Invented the AMM model.</div>
+        </div>
+        <div class="protocol">
+          <div class="protocol-header"><span class="protocol-icon">👻</span><span class="protocol-name">Aave</span><span class="protocol-type">Lending</span></div>
+          <div class="protocol-desc">Borrow and lend 30+ assets. Flash loans invented here. ~$10B TVL across multiple chains.</div>
+        </div>
+        <div class="protocol">
+          <div class="protocol-header"><span class="protocol-icon">📊</span><span class="protocol-name">Compound</span><span class="protocol-type">Lending</span></div>
+          <div class="protocol-desc">Algorithmic interest rate protocol. Pioneered liquidity mining with COMP governance tokens.</div>
+        </div>
+        <div class="protocol">
+          <div class="protocol-header"><span class="protocol-icon">🔵</span><span class="protocol-name">Curve</span><span class="protocol-type">Stablecoin DEX</span></div>
+          <div class="protocol-desc">Optimised for stablecoin-to-stablecoin swaps with minimal slippage. Largest DeFi TVL historically.</div>
+        </div>
+        <div class="protocol">
+          <div class="protocol-header"><span class="protocol-icon">⚡</span><span class="protocol-name">GMX</span><span class="protocol-type">Derivatives</span></div>
+          <div class="protocol-desc">On-chain perpetual futures with up to 50x leverage. No KYC. Revenue shared with token holders.</div>
+        </div>
+        <div class="protocol">
+          <div class="protocol-header"><span class="protocol-icon">🏛️</span><span class="protocol-name">MakerDAO</span><span class="protocol-type">Stablecoins</span></div>
+          <div class="protocol-desc">Creates the DAI stablecoin. Oldest major DeFi protocol. Governed by MKR token holders.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>DeFi Risks</h2>
+      <div class="warning">⚠️ <strong>DeFi is high-risk.</strong> Billions of dollars have been lost to hacks, bugs, and scams. Only use funds you can afford to lose entirely.</div>
+      <ul>
+        <li><strong>Smart contract bugs</strong> — code can have exploitable vulnerabilities. Even audited protocols have been hacked.</li>
+        <li><strong>Impermanent loss</strong> — providing liquidity can result in less value than simply holding the tokens.</li>
+        <li><strong>Rug pulls</strong> — anonymous teams create tokens, attract liquidity, then drain the funds and disappear.</li>
+        <li><strong>Oracle manipulation</strong> — price feeds can be manipulated to trigger unfair liquidations.</li>
+        <li><strong>Regulatory risk</strong> — DeFi regulation is evolving. Some protocols may become restricted in certain jurisdictions.</li>
+        <li><strong>UI phishing</strong> — fake DeFi front-ends trick users into approving malicious smart contracts.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>DeFi at a Glance</h3>
+      <div class="fact-row"><span class="fact-label">Launched</span><span class="fact-value">~2018 (Uniswap)</span></div>
+      <div class="fact-row"><span class="fact-label">Primary chain</span><span class="fact-value">Ethereum</span></div>
+      <div class="fact-row"><span class="fact-label">TVL</span><span class="fact-value">~$70B</span></div>
+      <div class="fact-row"><span class="fact-label">KYC required</span><span class="fact-value">❌ No</span></div>
+      <div class="fact-row"><span class="fact-label">Legal in India</span><span class="fact-value">Grey area</span></div>
+    </div>
+    <div class="sidebar-card">
+      <h3>Learn More</h3>
+      <nav class="learn-nav">
+        <a href="/learn/what-is-crypto.html"><span>🪙</span>What is Crypto?</a>
+        <a href="/learn/how-to-buy.html"><span>🛒</span>How to Buy Bitcoin</a>
+        <a href="/learn/what-is-blockchain.html"><span>⛓️</span>What is Blockchain?</a>
+        <a href="/learn/defi.html" class="active"><span>🏦</span>What is DeFi?</a>
+        <a href="/learn/nft.html"><span>🖼️</span>What are NFTs?</a>
+        <a href="/learn/crypto-wallets.html"><span>👛</span>Crypto Wallets</a>
+        <a href="/learn/glossary.html"><span>📖</span>Crypto Glossary</a>
+      </nav>
+    </div>
+  </aside>
+</div>
+
+<footer>© 2026 BookMyCrypto.com. All Rights Reserved. — <em>Not financial advice.</em></footer>
+</body>
+</html>

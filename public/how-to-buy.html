@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Buy Bitcoin — BookMyCrypto Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1251c5;--blue-dark:#0d3d99;--blue-light:#e8f0fe;--bg:#f5f7fb;--bg2:#fff;--border:#e2e8f0;--text:#0f172a;--text2:#334155;--muted:#94a3b8;--orange:#f97316;--green:#16a34a;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
+    header{background:var(--blue);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(18,81,197,0.3);}
+    .logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;text-decoration:none;color:#fff;display:flex;align-items:center;}
+    .logo-my{background:#f97316;padding:1px 6px 2px;border-radius:6px;margin:0 2px;font-style:italic;display:inline-block;}
+    .logo-crypto{color:#93c5fd;}
+    .back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;transition:all .15s;}
+    .back:hover{background:rgba(255,255,255,0.1);}
+
+    .hero{background:linear-gradient(135deg,#0d3d99 0%,#1a5c1a 100%);padding:3.5rem 2rem;color:#fff;text-align:center;}
+    .learn-tag{display:inline-block;background:rgba(255,255,255,0.15);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem;color:#86efac;}
+    .hero h1{font-family:'Nunito',sans-serif;font-size:2.6rem;font-weight:900;letter-spacing:-1px;margin-bottom:.75rem;}
+    .hero h1 span{color:#fbbf24;}
+    .hero p{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;font-size:15px;}
+    .hero-meta{margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;font-size:12px;color:rgba(255,255,255,.5);}
+
+    .layout{max-width:1060px;margin:2.5rem auto;padding:0 2rem 4rem;display:grid;grid-template-columns:1fr 280px;gap:2rem;}
+    @media(max-width:780px){.layout{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+    .card h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:2px solid var(--blue-light);}
+    .card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--blue);margin:1.25rem 0 .5rem;}
+    .card p{color:var(--text2);margin-bottom:.85rem;line-height:1.8;}
+    .card p:last-child{margin-bottom:0;}
+    .card ul,.card ol{padding-left:1.4rem;color:var(--text2);line-height:2.1;margin-bottom:.75rem;}
+
+    /* Step cards */
+    .step{display:flex;gap:1.25rem;margin-bottom:1.5rem;padding:1.5rem;background:var(--bg);border-radius:12px;border:1px solid var(--border);}
+    .step:last-child{margin-bottom:0;}
+    .step-num{flex-shrink:0;width:42px;height:42px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;}
+    .step-content h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--text);margin-bottom:.4rem;}
+    .step-content p{color:var(--text2);font-size:13px;line-height:1.7;margin:0;}
+    .step-content .tip{background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:600;padding:6px 10px;border-radius:6px;margin-top:.6rem;display:inline-block;}
+
+    /* Exchange comparison */
+    .exchange-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:13px;}
+    .exchange-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;}
+    .exchange-table th:first-child{border-radius:8px 0 0 0;}
+    .exchange-table th:last-child{border-radius:0 8px 0 0;}
+    .exchange-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);}
+    .exchange-table tr:last-child td{border-bottom:none;}
+    .exchange-table tr:nth-child(even) td{background:var(--bg);}
+    .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;}
+    .badge.green{background:#dcfce7;color:#15803d;}
+    .badge.blue{background:var(--blue-light);color:var(--blue);}
+
+    /* Warning */
+    .warning{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:1.25rem 1.5rem;margin:1.25rem 0;font-size:13px;color:#92400e;line-height:1.7;}
+    .highlight-box{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin:1.25rem 0;}
+    .highlight-box p{color:var(--blue);font-weight:600;margin:0;font-size:14px;}
+
+    /* Tax */
+    .tax-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0;}
+    .tax-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;}
+    .tax-num{font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:var(--blue);}
+    .tax-label{font-size:11px;color:var(--muted);margin-top:4px;}
+
+    .sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;position:sticky;top:80px;}
+    .sidebar-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+    .learn-nav a{display:flex;align-items:center;gap:8px;text-decoration:none;padding:.6rem .75rem;border-radius:8px;font-size:12px;font-weight:600;color:var(--text2);transition:background .15s;margin-bottom:3px;}
+    .learn-nav a:hover{background:var(--blue-light);color:var(--blue);}
+    .learn-nav a.active{background:var(--blue);color:#fff;}
+    .fact-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:13px;}
+    .fact-row:last-child{border-bottom:none;}
+    .fact-label{color:var(--muted);}
+    .fact-value{font-weight:600;color:var(--text);}
+
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:12px;border-top:1px solid var(--border);}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span>book</span><span class="logo-my">my</span><span class="logo-crypto">crypto</span></a>
+  <a class="back" href="/">← Back to Markets</a>
+</header>
+
+<div class="hero">
+  <div class="learn-tag">📚 Learn Series</div>
+  <h1>How to Buy <span>Bitcoin</span></h1>
+  <p>A step-by-step guide to buying your first Bitcoin in India — safely, legally, and simply.</p>
+  <div class="hero-meta"><span>⏱ 10 min read</span><span>🟢 Beginner</span><span>📅 Updated May 2026</span></div>
+</div>
+
+<div class="layout">
+  <main>
+
+    <div class="card">
+      <h2>Before You Buy: The Basics</h2>
+      <p>Buying Bitcoin is simpler than it sounds. You don't need to buy a whole Bitcoin — you can buy as little as ₹100 worth. Here's what you'll need to get started:</p>
+      <ul>
+        <li>A smartphone or computer</li>
+        <li>A bank account or UPI-linked account</li>
+        <li>Your PAN card (mandatory for KYC)</li>
+        <li>Your Aadhaar card or other ID</li>
+      </ul>
+      <div class="warning">⚠️ <strong>Important:</strong> Only invest money you can afford to lose completely. Bitcoin's price can fall 50%+ in a matter of weeks. Never borrow to invest in crypto.</div>
+    </div>
+
+    <div class="card">
+      <h2>Step-by-Step: Buying Bitcoin</h2>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Choose a Reputable Exchange</h3>
+          <p>Pick an exchange registered with India's Financial Intelligence Unit (FIU). CoinDCX, WazirX, and ZebPay are popular Indian options. Binance and Kraken work for international exposure.</p>
+          <span class="tip">💡 Indian exchanges make INR deposits via UPI easiest</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Create Your Account</h3>
+          <p>Sign up with your email address and create a strong, unique password. Enable two-factor authentication (2FA) with an authenticator app — this is non-negotiable for security.</p>
+          <span class="tip">🔐 Use Google Authenticator or Authy for 2FA, not SMS</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Complete KYC Verification</h3>
+          <p>Indian regulations require exchanges to verify your identity. You'll need to upload a photo of your PAN card, a selfie, and sometimes your Aadhaar. This process takes 15 minutes to 48 hours.</p>
+          <span class="tip">📄 KYC is required by law — any exchange not asking is a red flag</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Deposit Indian Rupees</h3>
+          <p>Add funds to your exchange wallet using UPI, NEFT, or bank transfer. Most Indian exchanges accept UPI instantly. There may be small deposit fees.</p>
+          <span class="tip">💰 Start with ₹1,000–₹5,000 for your first purchase</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Place Your Buy Order</h3>
+          <p>Search for BTC/INR on the exchange. For beginners, use a <strong>market order</strong> — it buys immediately at the current price. A limit order lets you set a target price, but it may not fill immediately.</p>
+          <span class="tip">📊 Watch live BTC prices on <a href="/" style="color:var(--blue)">BookMyCrypto</a> before buying</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Secure Your Bitcoin</h3>
+          <p>For small amounts, leaving crypto on the exchange is fine. For larger holdings (₹1L+), move your Bitcoin to a hardware wallet (Ledger or Trezor) for maximum security — you control the keys.</p>
+          <span class="tip">🔑 "Not your keys, not your coins" — exchange hacks do happen</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Indian Crypto Exchanges Compared</h2>
+      <table class="exchange-table">
+        <tr><th>Exchange</th><th>UPI Support</th><th>Fees (approx)</th><th>Best For</th></tr>
+        <tr><td><strong>CoinDCX</strong></td><td><span class="badge green">✓ Yes</span></td><td>0.1–0.5%</td><td>Beginners</td></tr>
+        <tr><td><strong>WazirX</strong></td><td><span class="badge green">✓ Yes</span></td><td>0.2%</td><td>Wide coin selection</td></tr>
+        <tr><td><strong>ZebPay</strong></td><td><span class="badge green">✓ Yes</span></td><td>0.15–0.25%</td><td>Simple interface</td></tr>
+        <tr><td><strong>Binance</strong></td><td><span class="badge blue">Limited</span></td><td>0.1%</td><td>Advanced trading</td></tr>
+        <tr><td><strong>CoinSwitch</strong></td><td><span class="badge green">✓ Yes</span></td><td>~1.5%</td><td>App-first experience</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Tax Rules in India (2026)</h2>
+      <p>Crypto gains are taxable in India. Here's what you need to know:</p>
+      <div class="tax-grid">
+        <div class="tax-item"><div class="tax-num">30%</div><div class="tax-label">Flat tax on crypto profits</div></div>
+        <div class="tax-item"><div class="tax-num">1%</div><div class="tax-label">TDS on transactions over ₹10,000</div></div>
+        <div class="tax-item"><div class="tax-num">₹0</div><div class="tax-label">Loss set-off allowed (within same coin)</div></div>
+      </div>
+      <p>You must declare crypto income in your ITR under "Income from Virtual Digital Assets." Keep records of every purchase and sale including dates, amounts, and prices.</p>
+      <div class="highlight-box"><p>📋 Consult a CA familiar with crypto taxation before filing. Rules may change annually.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>Safety Tips</h2>
+      <ul>
+        <li><strong>Never share your seed phrase</strong> — the 12/24 word recovery phrase for your wallet. No legitimate platform will ever ask for it.</li>
+        <li><strong>Beware of fake apps</strong> — always download exchange apps from official app stores, double-checking the developer name.</li>
+        <li><strong>Use unique passwords</strong> — your crypto exchange password should not be used anywhere else.</li>
+        <li><strong>Verify URLs</strong> — phishing sites mimic real exchanges. Bookmark the real URL.</li>
+        <li><strong>Enable withdrawal whitelist</strong> — most exchanges let you restrict withdrawals to pre-approved addresses.</li>
+        <li><strong>Never invest based on WhatsApp/Telegram tips</strong> — these are almost always scams or pump-and-dump schemes.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Key Numbers</h3>
+      <div class="fact-row"><span class="fact-label">Minimum buy</span><span class="fact-value">₹100</span></div>
+      <div class="fact-row"><span class="fact-label">Typical fees</span><span class="fact-value">0.1–0.5%</span></div>
+      <div class="fact-row"><span class="fact-label">Tax rate</span><span class="fact-value">30%</span></div>
+      <div class="fact-row"><span class="fact-label">TDS</span><span class="fact-value">1%</span></div>
+      <div class="fact-row"><span class="fact-label">KYC time</span><span class="fact-value">15 min–48 hrs</span></div>
+    </div>
+    <div class="sidebar-card">
+      <h3>Learn More</h3>
+      <nav class="learn-nav">
+        <a href="/learn/what-is-crypto.html"><span>🪙</span>What is Crypto?</a>
+        <a href="/learn/how-to-buy.html" class="active"><span>🛒</span>How to Buy Bitcoin</a>
+        <a href="/learn/what-is-blockchain.html"><span>⛓️</span>What is Blockchain?</a>
+        <a href="/learn/defi.html"><span>🏦</span>What is DeFi?</a>
+        <a href="/learn/nft.html"><span>🖼️</span>What are NFTs?</a>
+        <a href="/learn/crypto-wallets.html"><span>👛</span>Crypto Wallets</a>
+        <a href="/learn/glossary.html"><span>📖</span>Crypto Glossary</a>
+      </nav>
+    </div>
+  </aside>
+</div>
+
+<footer>© 2026 BookMyCrypto.com. All Rights Reserved. — <em>Not financial advice.</em></footer>
+</body>
+</html>
